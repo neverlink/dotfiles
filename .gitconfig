@@ -1,0 +1,11 @@
+[alias]
+  logs = log --oneline -n10
+[core]
+  autocrlf = input
+[push]
+  autoSetupRemote = true
+[pull]
+  rebase = true
+[user]
+  name = neverlink
+  email = 29165285+neverlink@users.noreply.github.com
