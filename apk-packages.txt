@@ -1,0 +1,12 @@
+git
+nnn
+fzf
+btop
+htop
+nvim
+broot
+python
+zoxide
+ripgrep
+neofetch
+starship

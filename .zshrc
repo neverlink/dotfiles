@@ -1,4 +1,6 @@
-export PATH="/home/nine/.local/bin:$PATH"
+export XDG_CONFIG_HOME="${HOME}/.config"
+export XDG_DATA_HOME="${HOME}/.local"
+export PATH="${XDG_DATA_HOME}/bin:$PATH"
 
 alias mv='mv -i'
 alias ls='ls -lah --color=auto'
