@@ -9,3 +9,5 @@
 [user]
   name = neverlink
   email = 29165285+neverlink@users.noreply.github.com
+[remote "origin"]
+  prune = true

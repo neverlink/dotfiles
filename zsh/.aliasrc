@@ -1,0 +1,32 @@
+# Misc aliases
+alias v='nvim'
+alias df='df -h'
+alias mv='mv -i'
+alias rm='rm -ri'
+alias ls='ls -lah --color=auto --group-directories-first'
+#alias diff='diff --color=auto'
+alias grep='grep --color=auto'
+alias awswho='aws sts get-caller-identity'
+saml() {
+  if [[ $# -ne 1 ]]; then;
+    echo "Expected 1 argument, got $#"
+    return
+  fi
+  local profile="$1"
+  local role_arn=$(printenv | grep "$profile" | cut -d '=' -f2)
+  saml2aws login --force --skip-prompt --profile "${profile}" --role "${role_arn}" && export AWS_PROFILE="${profile}"
+}
+
+# Git aliases
+alias ga='git add .'
+alias gc='git commit -m'
+
+# Windows aliases
+if uname -a | grep -iq "wsl"; then
+  alias cmd='cmd.exe'
+  alias {ex,explorer}='explorer.exe .'
+  DISTRO=$(grep ^ID= /etc/os-release | cut -d= -f2)
+  code() {
+    nohup code.exe --remote wsl+"${DISTRO}" "$(pwd)" >&/dev/null &
+  }
+fi

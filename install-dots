@@ -1,10 +1,8 @@
-#!/bin/bash
+#!/bin/zsh
 
-set +e +x
+set -o pipefail
 
-XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
-
-ln -sf "$(realpath .zshrc)" "${HOME}/.zshrc"
+ln -sf "$(realpath zsh)" "${ZDOTDIR}" && source "${ZDOTDIR}/zsh/.zshrc"
 ln -sf "$(realpath .gitconfig)" "${HOME}/.gitconfig"
 
 ln -sf "$(realpath nvim)" "${XDG_CONFIG_HOME}/nvim"
