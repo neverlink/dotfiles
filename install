@@ -1,0 +1,16 @@
+#!/bin/zsh
+
+set -e
+
+xargs -a packages/apk sudo apk add
+
+source zsh/.zshenv && mkdir -p "${XDG_CONFIG_HOME}"
+
+ln -sfnv "$(realpath zsh)" "${ZDOTDIR}"
+ln -sfnv "$(realpath git)" "${XDG_CONFIG_HOME}/git"
+ln -sfnv "$(realpath nvim)" "${XDG_CONFIG_HOME}/nvim"
+ln -sfnv "$(realpath starship)" "${XDG_CONFIG_HOME}/starship"
+
+zsh
+# Install from apk-packages.txt if OS is Alpine
+# Consider nix?

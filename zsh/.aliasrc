@@ -22,11 +22,11 @@ alias ga='git add .'
 alias gc='git commit -m'
 
 # Windows aliases
-if uname -a | grep -iq "wsl"; then
-  alias cmd='cmd.exe'
-  alias {ex,explorer}='explorer.exe .'
-  DISTRO=$(grep ^ID= /etc/os-release | cut -d= -f2)
-  code() {
-    nohup code.exe --remote wsl+"${DISTRO}" "$(pwd)" >&/dev/null &
-  }
-fi
+# if uname -a | grep -iq "wsl"; then
+#   alias cmd='cmd.exe'
+#   alias {ex,explorer}='explorer.exe .'
+#   DISTRO=$(grep ^ID= /etc/os-release | cut -d= -f2)
+#   code() {
+#     nohup code.exe --remote wsl+"${DISTRO}" "$(pwd)" >&/dev/null &
+#   }
+# fi

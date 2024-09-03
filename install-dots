@@ -1,9 +1,0 @@
-#!/bin/zsh
-
-set -o pipefail
-
-ln -sf "$(realpath zsh)" "${ZDOTDIR}" && source "${ZDOTDIR}/zsh/.zshrc"
-ln -sf "$(realpath .gitconfig)" "${HOME}/.gitconfig"
-
-ln -sf "$(realpath nvim)" "${XDG_CONFIG_HOME}/nvim"
-ln -sf "$(realpath starship.toml)" "${XDG_CONFIG_HOME}/starship.toml"

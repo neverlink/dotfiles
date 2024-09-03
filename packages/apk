@@ -5,15 +5,13 @@ xh
 git
 fzf
 nnn
-rnr
 btop
 htop
-nvim
 atuin
 broot
 htmlq
 jless
-python
+neovim
 zoxide
 lazygit
 ripgrep
@@ -24,3 +22,4 @@ difftastic
 mandoc
 man-pages
 neovim-doc
+coreutils-doc
