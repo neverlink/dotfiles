@@ -10,7 +10,7 @@ export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
 [ -f "${ZDOTDIR}/.optionrc" ] && source "${ZDOTDIR}/.optionrc"
 [ -f "${ZDOTDIR}/.pluginrc" ] && source "${ZDOTDIR}/.pluginrc"
 
-export GIT_CONFIG_GLOBAL="${XDG_CONFIG_HOME}/git/gitconfig"
+export GIT_CONFIG_GLOBAL="${XDG_CONFIG_HOME}/git/config"
 export STARSHIP_CONFIG="${XDG_CONFIG_HOME}/starship/starship.toml"
 
 export PIP_BREAK_SYSTEM_PACKAGES='1'
