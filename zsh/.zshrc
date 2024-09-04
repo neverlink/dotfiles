@@ -6,6 +6,11 @@
 # REMAINDER='%F{green}➜%f '
 # PROMPT="${USER}@${HOST} on ${CWD}${NEWLINE}${REMAINDER}"
 
+[ -f "${ZDOTDIR}/.aliasrc" ] && source "${ZDOTDIR}/.aliasrc"
+[ -f "${ZDOTDIR}/.functionrc" ] && source "${ZDOTDIR}/.functionrc"
+[ -f "${ZDOTDIR}/.optionrc" ] && source "${ZDOTDIR}/.optionrc"
+[ -f "${ZDOTDIR}/.pluginrc" ] && source "${ZDOTDIR}/.pluginrc"
+
 HISTSIZE=110000
 SAVEHIST=100000
 HISTFILE=~/.histfile
@@ -16,5 +21,6 @@ if [ -x "$(which pyenv)" ]; then
 fi
 
 eval "$(atuin init zsh --disable-up-arrow)"
+eval "$(saml2aws --completion-script-zsh)"
 eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"

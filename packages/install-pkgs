@@ -1,0 +1,47 @@
+#!/bin/bash -e
+
+# TODO: consider Nix?
+if [[ -f /etc/alpine-release ]]; then
+  sudo apk update && sudo apk upgrade -a
+  xargs -a "packages/apk-list" sudo apk add
+  sudo adduser $(whoami) docker # Requires new session
+  # https://github.com/pyenv/pyenv/wiki#troubleshooting--faq
+  sudo apk add build-base libffi-dev openssl-dev bzip2-dev zlib-dev xz-dev readline-dev sqlite-dev tk-dev
+fi
+
+# Docker Compose
+if ! [ -x "$(which docker-compose)" ]; then
+  sudo curl \
+    -SL https://github.com/docker/compose/releases/download/v2.29.2/docker-compose-linux-x86_64 \
+    -o /usr/local/bin/docker-compose
+  sudo chmod +x /usr/local/bin/docker-compose
+else
+  echo 'docker-compose is already installed.'
+fi
+
+# Terraform
+# cd /usr/local/bin && \
+# curl https://releases.hashicorp.com/terraform/${TF_VERSION}/terraform_${TF_VERSION}_linux_amd64.zip \ 
+#   -o terraform_${TF_VERSION}_linux_amd64.zip && \
+# unzip terraform_${TF_VERSION}_linux_amd64.zip && \
+# rm terraform_${TF_VERSION}_linux_amd64.zip
+
+# https://github.com/pyenv/pyenv
+if ! [ -x "$(which pyenv)" ]; then
+  curl https://pyenv.run | bash
+else
+  echo 'pyenv is already installed.'
+fi
+
+# https://github.com/Versent/saml2aws
+if ! [ -x "$(which saml2aws)" ]; then
+  mkdir -p /usr/local/bin
+  SAML2AWS_VERSION=$(curl -Ls https://api.github.com/repos/Versent/saml2aws/releases/latest | grep 'tag_name' | cut -d'v' -f2 | cut -d'"' -f1)
+  wget -c "https://github.com/Versent/saml2aws/releases/download/v${SAML2AWS_VERSION}/saml2aws_${SAML2AWS_VERSION}_linux_amd64.tar.gz" -O - | sudo tar -xzv -C /usr/local/bin
+  sudo chmod u+x /usr/local/bin/saml2aws
+else
+  echo 'saml2aws is already installed.'
+fi
+
+# https://github.com/ismaelgv/rnr
+# cargo install rnr

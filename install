@@ -1,21 +1,41 @@
-#!/bin/zsh -e
+#!/bin/bash -e
 
-# TODO: Apply wsl/wsl.conf?
-# ln -sfnv "$(realpath wsl/wsl.conf)" "/etc/wsl.conf"
+echo -n 'Install packages? (Y/n): '
+read response && response="${response:-y}"
+if [[ "$response" =~ ^[Yy]$ ]]; then
+  source "packages/install-pkgs"
+fi
 
-# Packages (consider Nix?)
-xargs -a packages/apk sudo apk add # TODO: Restrict to Alpine
-adduser $(whoami) docker # Requires new session
-# Test these?
-# rc-update add docker boot
-# rc-service docker start
-# source packages/shell-installers # TODO: Test this
+echo -n 'Apply dotfiles? (Y/n): '
+read response && response="${response:-y}"
+if [[ "$response" =~ ^[Yy]$ ]]; then
+  source zsh/.zshenv && mkdir -p "${XDG_CONFIG_HOME}"
+  ln -sfnv "$(realpath zsh)" "${ZDOTDIR}"
+  ln -sfnv "$(realpath git)" "${XDG_CONFIG_HOME}/git"
+  ln -sfnv "$(realpath nvim)" "${XDG_CONFIG_HOME}/nvim"
+  ln -sfnv "$(realpath starship)" "${XDG_CONFIG_HOME}/starship"
+fi
 
-source zsh/.zshenv && mkdir -p "${XDG_CONFIG_HOME}"
+echo -n 'Update wsl.conf? (Y/n): '
+read response && response="${response:-y}"
+if [[ "$response" =~ ^[Yy]$ ]]; then
+  sudo ln -sfnv "$(realpath wsl/wsl-startup)" '/usr/local/bin/wsl-startup'
+  sudo chmod +x '/usr/local/bin/wsl-startup'
+  sudo ln -sfnv "$(realpath wsl/wsl.conf)" '/etc/wsl.conf'
+  echo 'Restart WSL for the changes to take effect.'
+fi
 
-ln -sfnv "$(realpath zsh)" "${ZDOTDIR}"
-ln -sfnv "$(realpath git)" "${XDG_CONFIG_HOME}/git"
-ln -sfnv "$(realpath nvim)" "${XDG_CONFIG_HOME}/nvim"
-ln -sfnv "$(realpath starship)" "${XDG_CONFIG_HOME}/starship"
+echo -n 'Bind AWS credentials to WSL? (Y/n): '
+read response && response="${response:-y}"
+if [[ "$response" =~ ^[Yy]$ ]]; then
+  WINDOWS_USER=$(cmd.exe /c "echo %USERNAME%" | tr -d '\r')
+  CREDENTIALS_PATH="/mnt/c/Users/${WINDOWS_USER}/.aws"
+  if [ ! -d "${CREDENTIALS_PATH}" ]; then
+    mkdir -v "${CREDENTIALS_PATH}" && \
+    touch "${CREDENTIALS_PATH}/config" && \
+    touch "${CREDENTIALS_PATH}/credentials"
+  fi
+  ln -sfnv "${CREDENTIALS_PATH}" ~/.aws
+fi
 
 zsh

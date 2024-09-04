@@ -1,0 +1,6 @@
+#!/bin/ash
+
+{
+  export PATH="$PATH" && \
+  dockerd &
+} > /tmp/boot.log 2>&1

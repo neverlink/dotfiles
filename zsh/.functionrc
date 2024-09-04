@@ -1,0 +1,20 @@
+#saml() {
+#  if [[ $# -ne 1 ]]; then;
+#    echo "Expected 1 argument, got $#"
+#    return
+#  fi
+#  local profile="$1"
+#  local role_arn=$(printenv | grep "$profile" | cut -d '=' -f2)
+#  saml2aws login --force --skip-prompt --role "${role_arn}" --profile "${profile}" && \
+#  export AWS_PROFILE="${profile}"
+#}
+
+# Windows utilities
+if uname -a | grep -iq "wsl"; then
+  alias cmd='cmd.exe'
+  alias {ex,explorer}='explorer.exe .'
+  DISTRO=$(grep ^ID= /etc/os-release | cut -d= -f2)
+  code() {
+    nohup code.exe --remote wsl+"${DISTRO}" "$(pwd)" >&/dev/null &
+  }
+fi

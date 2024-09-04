@@ -6,7 +6,9 @@ git
 fzf
 nnn
 btop
+curl
 htop
+make
 atuin
 broot
 cargo
@@ -16,10 +18,13 @@ docker
 neovim
 openrc
 zoxide
+aws-cli
 lazygit
+py3-pip
 ripgrep
 neofetch
 starship
+coreutils
 difftastic
 
 mandoc
