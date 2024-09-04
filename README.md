@@ -1,7 +1,11 @@
 # dotfiles
+My configs for
+- WSL (Alpine)
+- Windows Terminal
+- Sublime Text (!)
 
-TODO:
-Add font, other things?
+## Misc
+Font: JetBrainsMono Nerd Font
 
 ## Installation
-`./install`
+`chmod +x install && sudo ./install`

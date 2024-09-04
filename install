@@ -1,8 +1,15 @@
-#!/bin/zsh
+#!/bin/zsh -e
 
-set -e
+# TODO: Apply wsl/wsl.conf?
+# ln -sfnv "$(realpath wsl/wsl.conf)" "/etc/wsl.conf"
 
-xargs -a packages/apk sudo apk add
+# Packages (consider Nix?)
+xargs -a packages/apk sudo apk add # TODO: Restrict to Alpine
+adduser $(whoami) docker # Requires new session
+# Test these?
+# rc-update add docker boot
+# rc-service docker start
+# source packages/shell-installers # TODO: Test this
 
 source zsh/.zshenv && mkdir -p "${XDG_CONFIG_HOME}"
 
@@ -12,5 +19,3 @@ ln -sfnv "$(realpath nvim)" "${XDG_CONFIG_HOME}/nvim"
 ln -sfnv "$(realpath starship)" "${XDG_CONFIG_HOME}/starship"
 
 zsh
-# Install from apk-packages.txt if OS is Alpine
-# Consider nix?
