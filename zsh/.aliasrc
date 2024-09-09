@@ -9,6 +9,7 @@ alias awswho='aws sts get-caller-identity'
 alias saml='saml2aws login --force --skip-prompt --profile default'
 
 # Git aliases
+alias gs='git status'
 alias ga='git add .'
 alias gc='git commit -m'
 alias gp='git push'
