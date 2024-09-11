@@ -1,4 +1,5 @@
 # Misc aliases
+alias c='code'
 alias v='nvim'
 alias df='df -h'
 alias mv='mv -iv'

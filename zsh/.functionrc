@@ -9,12 +9,15 @@
 #  export AWS_PROFILE="${profile}"
 #}
 
+function code() {
+  if [ "$#" -eq 0 ]; then
+    command code .
+  else
+    command code "$@"
+  fi
+}
+
 # Windows utilities
 if uname -a | grep -iq "wsl"; then
-  alias cmd='cmd.exe'
   alias {ex,explorer}='explorer.exe .'
-  DISTRO=$(grep ^ID= /etc/os-release | cut -d= -f2)
-  code() {
-    nohup code.exe --remote wsl+"${DISTRO}" "$(pwd)" >&/dev/null &
-  }
 fi

@@ -15,6 +15,9 @@ HISTSIZE=110000
 SAVEHIST=100000
 HISTFILE=~/.histfile
 
+source "${ZDOTDIR}/.antidote/antidote.zsh"
+antidote load
+
 if [ -x "$(which pyenv)" ]; then
   eval "$(pyenv init -)"
   eval "$(pyenv virtualenv-init -)"
