@@ -14,3 +14,6 @@ export PIP_BREAK_SYSTEM_PACKAGES='1'
 export PATH="$HOME/.pyenv/bin:$PATH"
 
 export GPG_TTY=$(tty)
+
+export BAT_THEME='ansi'
+

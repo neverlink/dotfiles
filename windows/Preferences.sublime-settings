@@ -1,0 +1,42 @@
+{
+	"font_size": 18,
+	"font_face": "",
+	"font_options": [],
+
+	"color_scheme": "Packages/Enki Theme/scheme/Enki-Tokyo-Night.tmTheme",
+	"theme": "Adaptive.sublime-theme",
+
+	// "theme": "Adaptive.sublime-theme",
+	// "color_scheme": "Packages/User/cyanide-scheme.tmTheme",
+
+	"caret_style": "solid",
+	"block_caret": true,
+
+	"auto_complete_delay": 25,
+
+	"drag_text": false,
+	"word_wrap": false,
+	"show_encoding": true,
+	"highlight_line": true,
+	"scroll_past_end": false,
+	"save_on_focus_lost": true,
+	"focus_on_file_drop": true,
+	"remember_workspace": false,
+	"close_deleted_files": false,
+	"relative_line_numbers": false,
+
+	"shift_tab_unindent": true,
+	"use_tab_stops": true,
+	"translate_tabs_to_spaces": true,
+
+	"trim_trailing_white_space_on_save": "all",
+	"trim_only_modified_white_space": false,
+	"ensure_newline_at_eof_on_save": true,
+	"auto_complete_commit_on_tab": true,
+
+	"hardware_acceleration": "opengl",
+	"ignored_packages":
+	[
+		"Vintage",
+	],
+}

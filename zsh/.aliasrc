@@ -6,8 +6,11 @@ alias mv='mv -iv'
 alias rm='rm -riv'
 alias ls='ls -a --group-directories-first'
 alias path='echo "$PATH" | tr ":" "\n"'
+
 alias awswho='aws sts get-caller-identity'
 alias saml='saml2aws login --force --skip-prompt --profile default'
+
+alias weather='curl wttr.in'
 
 # Git aliases
 alias gs='git status'

@@ -4,5 +4,11 @@ My configs for
 - Windows Terminal
 - Sublime Text (todo)
 
-## Installation
+## Install
 `chmod +x install && ./install`
+
+## Credits
+https://github.com/nvim-lua/kickstart.nvim
+https://github.com/daltonmenezes/aura-theme
+https://github.com/jiyometrik/tokyonight-windows-terminal
+
